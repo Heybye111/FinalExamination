@@ -3,8 +3,9 @@ package xClients.api;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import xClients.entity.Employee;
+import xClients.entity.EmployeeEntity;
 import xClients.helper.configHelper;
+import xClients.pojo.Employee;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.greaterThan;
@@ -29,7 +30,7 @@ public class employeeApi {
                 .extract().path("id");
     }
 
-    public static Employee getEmployeeInfo(int employeeId) {
+    public static EmployeeEntity getEmployeeInfo(int employeeId) {
         Response response = RestAssured.given()
                 .log().all()
                 .contentType(ContentType.JSON)
@@ -39,6 +40,6 @@ public class employeeApi {
                 .log().all()
                 .statusCode(200) //В свагере описано что статус код должен быть 201, по факту 200. так что тут баг в контракте
                 .extract().response();
-        return response.body().as(Employee.class);
+        return response.body().as(EmployeeEntity.class);
     }
 }
