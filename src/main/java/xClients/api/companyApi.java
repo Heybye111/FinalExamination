@@ -31,7 +31,8 @@ public class companyApi {
         }
 
     }
-    public static void changeCompanyActivity(int id, boolean activity, String token){
+
+    public static void changeCompanyActivity(int id, boolean activity, String token) {
 
         String body = "{\"isActive\": \"" + activity + "\"}";
         given()
@@ -46,17 +47,32 @@ public class companyApi {
                 .statusCode(200);
     }
 
-    public static List<CompanyResponse> getListOfCompanies(boolean activity){
+    public static List<CompanyResponse> getListOfCompanies(boolean activity) {
         CompanyResponse[] companies = given()
                 .log().all()
                 .contentType(ContentType.JSON)
                 .when()
-                .get(url + "/company")
+                .get(url + "/company" + "?active=" + activity)
                 .then()
                 .log().all()
                 .statusCode(200)
                 .extract()
                 .as(CompanyResponse[].class);
         return Arrays.asList(companies);
+    }
+
+    public static void deleteCompany(int id, String token) {
+        if (id <= 0) {
+            return;
+        }
+        given()
+                .log().all()
+                .header("x-client-token", token)
+                .contentType(ContentType.JSON)
+                .when()
+                .get(url + "/company/delete/" + id)
+                .then()
+                .log().all()
+                .statusCode(200);
     }
 }

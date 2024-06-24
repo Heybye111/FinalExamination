@@ -11,11 +11,10 @@ import lombok.NoArgsConstructor;
 public class CompanyResponse {
 
     private int id;
-    private boolean isActive;
     private String createDateTime;
-    private String lastChangeDateTime;
+    private String lastChangedDateTime;
     private String name;
     private String description;
-    private String deleted_at;
-
+    private String deletedAt;
+    private Boolean isActive;
 }
