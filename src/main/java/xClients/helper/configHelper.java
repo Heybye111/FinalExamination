@@ -18,15 +18,25 @@ public class configHelper {
     }
 
     public static String getUrl() {
-        String url = properties.getProperty("baseUrl");
-        return url;
+        return properties.getProperty("baseUrl");
     }
     public static String getLogin() {
-        String login = properties.getProperty("login");
-        return login;
+        return properties.getProperty("login");
     }
     public static String getPassword() {
-        String password = properties.getProperty("password");
-        return password;
+        return properties.getProperty("password");
     }
+    public static String getAuthUrl(){
+        return properties.getProperty("authUrl");
+    }
+    public static String getCompanyUrl(){
+        return properties.getProperty("companyUrl");
+    }
+    public static String getDeleteCompanyUrl(){
+        return properties.getProperty("deleteCompanyUrl");
+    }
+    public static String getEmployeeUrl(){
+        return properties.getProperty("employeeUrl");
+    }
+
 }

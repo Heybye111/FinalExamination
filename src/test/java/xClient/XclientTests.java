@@ -50,6 +50,10 @@ public class XclientTests {
             assertTrue(comp.getIsActive()); //Проверить что есть компании только активные
         }
     }
+    @Test
+    void test()  {
+
+    }
 
 
     @Test

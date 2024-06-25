@@ -13,7 +13,8 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.greaterThan;
 
 public class companyApi {
-    static String url = configHelper.getUrl();
+    static String url = configHelper.getCompanyUrl();
+    static String deleteCompanyUrl = configHelper.getDeleteCompanyUrl();
 
     public static int createCompany(Company company, String token) {
         {
@@ -22,7 +23,7 @@ public class companyApi {
                     .body(company)
                     .header("x-client-token", token)
                     .contentType(ContentType.JSON)
-                    .when().post(url + "/company")
+                    .when().post(url)
                     .then()
                     .log().all()
                     .statusCode(201)
@@ -41,7 +42,7 @@ public class companyApi {
                 .header("x-client-token", token)
                 .contentType(ContentType.JSON)
                 .when()
-                .patch(url + "/company/" + id)
+                .patch(url + id)
                 .then()
                 .log().all()
                 .statusCode(200);
@@ -52,7 +53,8 @@ public class companyApi {
                 .log().all()
                 .contentType(ContentType.JSON)
                 .when()
-                .get(url + "/company" + "?active=" + activity)
+                .queryParam("active", activity)
+                .get(url)
                 .then()
                 .log().all()
                 .statusCode(200)
@@ -70,7 +72,7 @@ public class companyApi {
                 .header("x-client-token", token)
                 .contentType(ContentType.JSON)
                 .when()
-                .get(url + "/company/delete/" + id)
+                .get(deleteCompanyUrl + id)
                 .then()
                 .log().all()
                 .statusCode(200);

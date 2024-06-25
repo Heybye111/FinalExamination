@@ -16,7 +16,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.greaterThan;
 
 public class employeeApi {
-    static String url = configHelper.getUrl();
+    static String url = configHelper.getEmployeeUrl();
 
 
     public static int createNewEmployee(Employee employee, String token) {
@@ -25,7 +25,7 @@ public class employeeApi {
                 .body(employee)
                 .header("x-client-token", token)
                 .contentType(ContentType.JSON)
-                .when().post(url + "/employee")
+                .when().post(url)
                 .then()
                 .log().all()
                 .statusCode(201)
@@ -53,7 +53,7 @@ public class employeeApi {
                 .body(employee)
                 .header("x-client-token", token)
                 .contentType(ContentType.JSON)
-                .when().post(url + "/employee")
+                .when().post(url)
                 .then()
                 .log().all()
                 .statusCode(500)
@@ -68,7 +68,8 @@ public class employeeApi {
                 .log().all()
                 .contentType(ContentType.JSON)
                 .when()
-                .get(url + "/employee" + "?company=" + companyId)
+                .queryParam("company", companyId )
+                .get(url)
                 .then()
                 .log().all()
                 .statusCode(200)

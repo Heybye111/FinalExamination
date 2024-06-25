@@ -7,7 +7,7 @@ import static io.restassured.RestAssured.given;
 
 public class authApi {
 
-    static String url = configHelper.getUrl();
+    static String url = configHelper.getAuthUrl();
 
 
     public static String getToken() {
@@ -17,7 +17,7 @@ public class authApi {
                 .body(body)
                 .contentType(ContentType.JSON)
                 .when()
-                .post(url + "/auth/login")
+                .post(url)
                 .then()
                 .log().all()
                 .statusCode(201)
