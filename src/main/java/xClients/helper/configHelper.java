@@ -20,38 +20,44 @@ public class configHelper {
     public static String getUrl() {
         return properties.getProperty("baseUrl");
     }
+
     public static String getLogin() {
         return properties.getProperty("login");
     }
+
     public static String getPassword() {
         return properties.getProperty("password");
     }
-    public static String getAuthUrl(){
+
+    public static String getAuthUrl() {
         return properties.getProperty("authUrl");
     }
-    public static String getCompanyUrl(){
+
+    public static String getCompanyUrl() {
         return properties.getProperty("companyUrl");
     }
-    public static String getDeleteCompanyUrl(){
+
+    public static String getDeleteCompanyUrl() {
         return properties.getProperty("deleteCompanyUrl");
     }
-    public static String getEmployeeUrl(){
+
+    public static String getEmployeeUrl() {
         return properties.getProperty("employeeUrl");
     }
-    public static String getUserDb(){
+
+    public static String getUserDb() {
         return properties.getProperty("userDb");
     }
-    public static String getPasswordDb(){
+
+    public static String getPasswordDb() {
         return properties.getProperty("passwordDb");
     }
-    public static String getConnectionString(){
+
+    public static String getConnectionString() {
         return properties.getProperty("connectionString");
     }
-    public static String getCompanyById(){
+
+    public static String getCompanyById() {
         return properties.getProperty("getCompanyById");
     }
-    public static String createEmployee(){
-        return properties.getProperty("createEmployee");
-    }
-
 }

@@ -12,7 +12,6 @@ import java.util.Date;
 @Accessors(chain = true)
 
 public class EmployeeForCompany {
-
     public int id;
     public Boolean isActive;
     public Date createDateTime;

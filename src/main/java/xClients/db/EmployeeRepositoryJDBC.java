@@ -1,6 +1,5 @@
 package xClients.db;
 
-import xClients.entity.EmployeeEntity;
 import xClients.helper.configHelper;
 
 import java.sql.*;
@@ -10,14 +9,13 @@ public class EmployeeRepositoryJDBC implements EmployeeRepository {
     String password = configHelper.getPasswordDb();
     String connectionString = configHelper.getConnectionString();
     Connection connection;
-//    private static final String SQL_INSERT_EMPLOYEE = configHelper.createEmployee();
-private static final String SQL_INSERT_EMPLOYEE = "INSERT INTO employee(\"is_active\", \"first_name\", \"last_name\", \"middle_name\", \"phone\", \"email\", \"birthdate\", \"avatar_url\", \"company_id\" ) "
-        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+    private static final String SQL_INSERT_EMPLOYEE = "INSERT INTO employee(\"is_active\", \"first_name\", \"last_name\"," +
+            " \"middle_name\", \"phone\", \"email\", \"birthdate\", \"avatar_url\", \"company_id\" ) "
+            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     @Override
-    public int createEmployee(boolean is_active, String first_name, String last_name, String middle_name, String phone, String email,
-                      String birthdate, String avatar_url, int company_id) throws SQLException {
+    public int createEmployee(boolean is_active, String first_name, String last_name, String middle_name, String phone,
+                              String email, String birthdate, String avatar_url, int company_id) throws SQLException {
         connection = DriverManager.getConnection(connectionString, user, password);
         PreparedStatement statement = connection.prepareStatement(SQL_INSERT_EMPLOYEE, Statement.RETURN_GENERATED_KEYS);
 

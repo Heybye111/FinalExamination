@@ -1,6 +1,5 @@
 package xClients.api;
 
-
 import io.restassured.http.ContentType;
 import xClients.pojo.Company;
 import xClients.helper.configHelper;
@@ -30,11 +29,9 @@ public class companyApi {
                     .body("id", greaterThan(0))
                     .extract().path("id");
         }
-
     }
 
     public static void changeCompanyActivity(int id, boolean activity, String token) {
-
         String body = "{\"isActive\": \"" + activity + "\"}";
         given()
                 .log().all()
@@ -76,6 +73,5 @@ public class companyApi {
                 .then()
                 .log().all()
                 .statusCode(200);
-
     }
 }

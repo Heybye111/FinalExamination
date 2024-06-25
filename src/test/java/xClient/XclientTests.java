@@ -10,7 +10,6 @@ import xClients.db.CompanyRepositoryJDBC;
 import xClients.db.EmployeeRepository;
 import xClients.db.EmployeeRepositoryJDBC;
 import xClients.entity.CompanyEntity;
-import xClients.entity.EmployeeEntity;
 import xClients.pojo.*;
 
 import java.io.File;
@@ -92,8 +91,8 @@ public class XclientTests {
     @DisplayName("Проверка проставления в бд времени удаления у удаленной компании")
     public void checkDeletedTime() throws IOException, SQLException {
         Company company = mapper.readValue(new File("src/test/java/xClient/resources/Company.json"), Company.class);
-        activeCompanyId = companyApi.createCompany(company, token); //Создать компанию
-        companyApi.deleteCompany(activeCompanyId, token); //Удалить компанию
+        activeCompanyId = companyApi.createCompany(company, token);
+        companyApi.deleteCompany(activeCompanyId, token);
         CompanyEntity deletedCompany = companyRepo.getCompanyById(activeCompanyId);
         assertNotNull(deletedCompany.getDeleted_at());
     }

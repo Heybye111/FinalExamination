@@ -11,7 +11,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 
 public class Employee {
-
     private int id;
     private Boolean isActive;
     private String firstName;

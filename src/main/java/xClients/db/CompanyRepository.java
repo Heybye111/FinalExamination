@@ -4,8 +4,6 @@ import xClients.entity.CompanyEntity;
 
 import java.sql.SQLException;
 
-public interface CompanyRepository   {
-
+public interface CompanyRepository {
     CompanyEntity getCompanyById(int id) throws SQLException;
-
 }

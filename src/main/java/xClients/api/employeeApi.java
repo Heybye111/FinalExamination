@@ -18,7 +18,6 @@ import static org.hamcrest.Matchers.greaterThan;
 public class employeeApi {
     static String url = configHelper.getEmployeeUrl();
 
-
     public static int createNewEmployee(Employee employee, String token) {
         return given()
                 .log().all()
@@ -33,19 +32,6 @@ public class employeeApi {
                 .body("id", greaterThan(1))
                 .extract().path("id");
     }
-
-//    public static EmployeeEntity getEmployeeInfo(int employeeId) {
-//        Response response = RestAssured.given()
-//                .log().all()
-//                .contentType(ContentType.JSON)
-//                .when()
-//                .get(url + "/" + employeeId)
-//                .then()
-//                .log().all()
-//                .statusCode(200) //В свагере описано что статус код должен быть 201, по факту 200. так что тут баг в контракте
-//                .extract().response();
-//        return response.body().as(EmployeeEntity.class);
-//    }
 
     public static CreateEmployeeError createNewEmployeeWithNonExistingCompany(Employee employee, String token) {
         CreateEmployeeError response = given()
@@ -68,7 +54,7 @@ public class employeeApi {
                 .log().all()
                 .contentType(ContentType.JSON)
                 .when()
-                .queryParam("company", companyId )
+                .queryParam("company", companyId)
                 .get(url)
                 .then()
                 .log().all()

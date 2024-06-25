@@ -6,9 +6,7 @@ import xClients.helper.configHelper;
 import static io.restassured.RestAssured.given;
 
 public class authApi {
-
     static String url = configHelper.getAuthUrl();
-
 
     public static String getToken() {
         String body = "{\"username\": \"" + configHelper.getLogin() + "\",\"password\": \"" + configHelper.getPassword() + "\"}";
@@ -24,5 +22,4 @@ public class authApi {
                 .extract().path("userToken");
         return token;
     }
-
 }

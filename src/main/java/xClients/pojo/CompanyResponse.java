@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 public class CompanyResponse {
-
     private int id;
     private String createDateTime;
     private String lastChangedDateTime;
