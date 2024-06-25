@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+import java.sql.Timestamp;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -12,10 +14,12 @@ import lombok.experimental.Accessors;
 
 public class CompanyEntity {
     private int id;
-    private boolean is_active;
-    private String create_timestamp;
-    private String change_timestamp;
+    private Boolean is_active;
+    private Timestamp create_timestamp;
+    private Timestamp change_timestamp;
     private String name;
     private String description;
-    private String deleted_at;
+    private Timestamp deleted_at;
 }
+
+

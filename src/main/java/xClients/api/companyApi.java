@@ -76,5 +76,6 @@ public class companyApi {
                 .then()
                 .log().all()
                 .statusCode(200);
+
     }
 }

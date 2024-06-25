@@ -38,5 +38,20 @@ public class configHelper {
     public static String getEmployeeUrl(){
         return properties.getProperty("employeeUrl");
     }
+    public static String getUserDb(){
+        return properties.getProperty("userDb");
+    }
+    public static String getPasswordDb(){
+        return properties.getProperty("passwordDb");
+    }
+    public static String getConnectionString(){
+        return properties.getProperty("connectionString");
+    }
+    public static String getCompanyById(){
+        return properties.getProperty("getCompanyById");
+    }
+    public static String createEmployee(){
+        return properties.getProperty("createEmployee");
+    }
 
 }
