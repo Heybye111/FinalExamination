@@ -1,5 +1,6 @@
 package xClients.db;
 
+import io.qameta.allure.Step;
 import xClients.entity.CompanyEntity;
 import xClients.helper.configHelper;
 
@@ -12,6 +13,7 @@ public class CompanyRepositoryJDBC implements CompanyRepository {
     private static final String SQL_SELECT_COMPANY_BY_ID = configHelper.getCompanyById();
     Connection connection;
 
+    @Step("Получить компанию из БД")
     @Override
     public CompanyEntity getCompanyById(int id) throws SQLException {
         connection = DriverManager.getConnection(connectionString, user, password);

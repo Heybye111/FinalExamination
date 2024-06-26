@@ -1,5 +1,6 @@
 package xClients.db;
 
+import io.qameta.allure.Step;
 import xClients.helper.configHelper;
 
 import java.sql.*;
@@ -13,6 +14,7 @@ public class EmployeeRepositoryJDBC implements EmployeeRepository {
             " \"middle_name\", \"phone\", \"email\", \"birthdate\", \"avatar_url\", \"company_id\" ) "
             + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
+    @Step("Создать сотрудника в БД")
     @Override
     public int createEmployee(boolean is_active, String first_name, String last_name, String middle_name, String phone,
                               String email, String birthdate, String avatar_url, int company_id) throws SQLException {
