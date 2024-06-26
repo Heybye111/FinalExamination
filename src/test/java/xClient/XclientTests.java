@@ -1,6 +1,10 @@
 package xClient;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.qameta.allure.Description;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.*;
 import xClients.api.authApi;
 import xClients.api.companyApi;
@@ -19,6 +23,8 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("Тесты на сервис xClients")
+@Owner("Heybye")
 public class XclientTests {
     static String token;
     static int activeCompanyId;
@@ -40,7 +46,9 @@ public class XclientTests {
     }
 
     @Test
-    @DisplayName("Проверка фильтрации компаний по параметру active")
+    @DisplayName("Проверка фильтрации компаний")
+    @Description("Сценарий 1. Проверка, что фильтрация компаний происходит по  по параметру active")
+    @Severity(SeverityLevel.CRITICAL)
     public void checkActiveFilterParam() throws IOException, SQLException {
         Company company = mapper.readValue(new File("src/test/java/xClient/resources/Company.json"), Company.class);
         activeCompanyId = companyApi.createCompany(company, token);
@@ -60,6 +68,8 @@ public class XclientTests {
 
     @Test
     @DisplayName("Проверка создания сотрудника в несуществующей компании")
+    @Description("Сценарий 2. Проверяем, что сотрудник не может быть создан в несуществующей компании")
+    @Severity(SeverityLevel.CRITICAL)
     public void createUserInNonExistentCompany() throws IOException {
         int companyId = 4543;
         companyApi.deleteCompany(companyId, token);
@@ -72,6 +82,8 @@ public class XclientTests {
 
     @Test
     @DisplayName("Проверка, что неактивный сотрудник не отображается в списке сотрудников компании")
+    @Description("Сценарий 3. ")
+    @Severity(SeverityLevel.CRITICAL)
     public void checkInactiveEmployeeNotDisplayed() throws IOException, SQLException {
         Company company = mapper.readValue(new File("src/test/java/xClient/resources/Company.json"), Company.class);
         activeCompanyId = companyApi.createCompany(company, token);//Создать компанию
@@ -89,6 +101,8 @@ public class XclientTests {
 
     @Test
     @DisplayName("Проверка проставления в бд времени удаления у удаленной компании")
+    @Description("Сценарий 4. ")
+    @Severity(SeverityLevel.NORMAL)
     public void checkDeletedTime() throws IOException, SQLException {
         Company company = mapper.readValue(new File("src/test/java/xClient/resources/Company.json"), Company.class);
         activeCompanyId = companyApi.createCompany(company, token);

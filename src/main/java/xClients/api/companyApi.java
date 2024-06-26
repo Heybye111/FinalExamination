@@ -1,5 +1,6 @@
 package xClients.api;
 
+import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
 import xClients.pojo.Company;
 import xClients.helper.configHelper;
@@ -15,6 +16,7 @@ public class companyApi {
     static String url = configHelper.getCompanyUrl();
     static String deleteCompanyUrl = configHelper.getDeleteCompanyUrl();
 
+    @Step("Создание компании")
     public static int createCompany(Company company, String token) {
         {
             return given()
@@ -31,6 +33,7 @@ public class companyApi {
         }
     }
 
+    @Step("Сменить состояния активности компании")
     public static void changeCompanyActivity(int id, boolean activity, String token) {
         String body = "{\"isActive\": \"" + activity + "\"}";
         given()
@@ -44,7 +47,7 @@ public class companyApi {
                 .log().all()
                 .statusCode(200);
     }
-
+    @Step("Получить список компаний")
     public static List<CompanyResponse> getListOfCompanies(boolean activity) {
         CompanyResponse[] companies = given()
                 .log().all()
@@ -59,7 +62,7 @@ public class companyApi {
                 .as(CompanyResponse[].class);
         return Arrays.asList(companies);
     }
-
+    @Step("Удалить компанию")
     public static void deleteCompany(int id, String token) {
         if (id <= 0) {
             return;

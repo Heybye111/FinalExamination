@@ -1,6 +1,7 @@
 package xClients.api;
 
 
+import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
 
 import xClients.helper.configHelper;
@@ -18,6 +19,7 @@ import static org.hamcrest.Matchers.greaterThan;
 public class employeeApi {
     static String url = configHelper.getEmployeeUrl();
 
+    @Step("Создать сотрудника")
     public static int createNewEmployee(Employee employee, String token) {
         return given()
                 .log().all()
@@ -33,6 +35,7 @@ public class employeeApi {
                 .extract().path("id");
     }
 
+    @Step("Создание пользователя в несуществующей компании")
     public static CreateEmployeeError createNewEmployeeWithNonExistingCompany(Employee employee, String token) {
         CreateEmployeeError response = given()
                 .log().all()
@@ -49,6 +52,7 @@ public class employeeApi {
         return response;
     }
 
+    @Step("Получить список сотрудников компании")
     public static List<EmployeeForCompany> getListOfEmployees(int companyId) {
         EmployeeForCompany[] employees = given()
                 .log().all()

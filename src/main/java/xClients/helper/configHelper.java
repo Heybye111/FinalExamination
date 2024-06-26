@@ -17,10 +17,6 @@ public class configHelper {
         }
     }
 
-    public static String getUrl() {
-        return properties.getProperty("baseUrl");
-    }
-
     public static String getLogin() {
         return properties.getProperty("login");
     }

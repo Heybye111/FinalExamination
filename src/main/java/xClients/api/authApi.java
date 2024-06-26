@@ -1,5 +1,6 @@
 package xClients.api;
 
+import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
 import xClients.helper.configHelper;
 
@@ -7,7 +8,7 @@ import static io.restassured.RestAssured.given;
 
 public class authApi {
     static String url = configHelper.getAuthUrl();
-
+    @Step("Авторизация и получение токена")
     public static String getToken() {
         String body = "{\"username\": \"" + configHelper.getLogin() + "\",\"password\": \"" + configHelper.getPassword() + "\"}";
         String token = given()
